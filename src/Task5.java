@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.stream.IntStream;
 
 public class Task5 {
 
@@ -47,8 +46,18 @@ public class Task5 {
 
             if (sumOfSet >= number) {
                 index--;
-            } else {
+            } else if (!numberSet.contains(fromOneToNumberValuesList.get(sumOfSet - 1))) {
                 numberSet.add(fromOneToNumberValuesList.get(sumOfSet - 1));
+                sumOfSet = 0;
+            } else {
+                if (fromOneToNumberValuesList.get(sumOfSet - 1) % 2 != 0) {
+                    numberSet.add(fromOneToNumberValuesList.get(fromOneToNumberValuesList.indexOf(sumOfSet / 2)));
+                    numberSet.add(fromOneToNumberValuesList.get(fromOneToNumberValuesList.indexOf(sumOfSet - sumOfSet / 2)));
+                } else {
+                    int avr = fromOneToNumberValuesList.get(fromOneToNumberValuesList.indexOf(sumOfSet / 2));
+                    numberSet.add(avr + 1);
+                    numberSet.add(avr - 1);
+                }
                 sumOfSet = 0;
             }
         }
@@ -61,9 +70,9 @@ public class Task5 {
     private static Set<Integer> getThirdSet(List<Integer> fromOneToNumberValuesList) {
         Set<Integer> thirdSet = new HashSet<>();
 
-        for (int i = 0; i < fromOneToNumberValuesList.size(); i++) {
-            if (fromOneToNumberValuesList.get(i) != 0) {
-                thirdSet.add(fromOneToNumberValuesList.get(i));
+        for (Integer integer : fromOneToNumberValuesList) {
+            if (integer != 0) {
+                thirdSet.add(integer);
             }
         }
 
@@ -83,9 +92,11 @@ public class Task5 {
         System.out.println(numberSet.size());
 
         for (int number : numberSet) {
-//            System.out.print(number + " ");
+            System.out.print(number + " ");
         }
+
         List<Integer> test = new ArrayList<>(numberSet);
+        System.out.print("\nSum: ");
         System.out.println(test.stream().mapToInt(Integer::intValue).sum());
 
         System.out.println("\n");
