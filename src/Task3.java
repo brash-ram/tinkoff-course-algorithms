@@ -12,7 +12,7 @@ public class Task3 {
                 insertFig(f, o);
             }
             clearMat(f);
-//            printM(f);
+             // printM(f);
         }
         System.out.println(System.currentTimeMillis() - prev);
     }
