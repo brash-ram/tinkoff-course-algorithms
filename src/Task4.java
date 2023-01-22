@@ -8,17 +8,10 @@ public class Task4 {
         int maxX = 0;
         int maxDivisors = 0;
 
-        long prev = System.currentTimeMillis();
-
         for (int i = n; i >= n / 2; i--) {
-//            if (Math.sqrt(i) != (int) Math.sqrt(i)) {
-//                continue;
-//            }
             int res = temp(i);
 
             map.put(i, res);
-
-          //   System.out.println(i + " " + res);
         }
 
         for (Map.Entry<Integer, Integer> val: map.entrySet()) {
@@ -28,7 +21,6 @@ public class Task4 {
             }
         }
 
-        System.out.println(System.currentTimeMillis() - prev);
         System.out.println(maxDivisors);
         System.out.println(maxX);
 

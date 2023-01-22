@@ -96,8 +96,6 @@ public class Task5 {
         }
 
         List<Integer> test = new ArrayList<>(numberSet);
-        System.out.print("\nSum: ");
-        System.out.println(test.stream().mapToInt(Integer::intValue).sum());
 
         System.out.println("\n");
     }
